@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="iXplores" customModuleProvider="target">
             <connections>
+                <outlet property="journalMap" destination="kfr-nH-Vme" id="l48-gY-JRE"/>
+                <outlet property="journalTable" destination="bRq-dk-XzB" id="1v3-nx-rYM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,22 +23,22 @@
                         <constraint firstAttribute="height" constant="350" id="Pbb-iD-6Rb"/>
                     </constraints>
                 </mapView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zsd-VB-XTv">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRq-dk-XzB">
                     <rect key="frame" x="0.0" y="350" width="600" height="250"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="kch-kv-cEO"/>
+                        <constraint firstAttribute="height" constant="250" id="zvr-55-isG"/>
                     </constraints>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="bRq-dk-XzB" secondAttribute="bottom" id="Ba4-cP-JZZ"/>
                 <constraint firstItem="kfr-nH-Vme" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DCc-Om-qWW"/>
-                <constraint firstAttribute="trailing" secondItem="Zsd-VB-XTv" secondAttribute="trailing" id="EBj-pC-lLa"/>
-                <constraint firstItem="Zsd-VB-XTv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EQu-6Q-fK5"/>
-                <constraint firstAttribute="bottom" secondItem="Zsd-VB-XTv" secondAttribute="bottom" id="TYR-BM-PLe"/>
+                <constraint firstAttribute="trailing" secondItem="bRq-dk-XzB" secondAttribute="trailing" id="Sd1-Pr-wi5"/>
                 <constraint firstItem="kfr-nH-Vme" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="law-fN-hCx"/>
                 <constraint firstAttribute="trailing" secondItem="kfr-nH-Vme" secondAttribute="trailing" id="pTX-8z-4YT"/>
+                <constraint firstItem="bRq-dk-XzB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="znU-lE-eY3"/>
             </constraints>
         </view>
     </objects>

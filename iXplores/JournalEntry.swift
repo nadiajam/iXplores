@@ -9,16 +9,16 @@
 import Foundation
 import MapKit
 
-class JournalEntry: NSObject {
+class JournalEntry: NSObject, MKAnnotation {
     var title:String?
     var notes:String?
     var date:String? //NSDate //CLLocationCoordinate2D.timestamp
-    var location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:0, longitude:0) //CLLocationCoordinate2D
+    var coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:0, longitude:0) //CLLocationCoordinate2D
     
-    init (title:String, notes:String, date:String, location:CLLocationCoordinate2D) {
+    init (title:String, notes:String, date:String, coordinate:CLLocationCoordinate2D) {
         self.title = title
         self.notes = notes
         self.date = date
-        self.location = location
+        self.coordinate = coordinate
     }
 }

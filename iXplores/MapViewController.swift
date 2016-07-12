@@ -9,54 +9,92 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
-
-    var mapView = MKMapView()
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var journalMap: MKMapView!
+    @IBOutlet weak var journalTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MAP
-        //mapView.frame = CGRectMake(0, 0, mapView.frame.size.width-5, mapView.frame.size.height-5)
-        //view.addSubview(mapView)
+        journalMap.delegate = self
+        journalTable.dataSource = self
+        journalTable.delegate = self
         
-        let southAfrica = CLLocationCoordinate2D(latitude: -33.9249, longitude: 18.4241)
-        let span = MKCoordinateSpanMake(2000, 2000)
-        let region = MKCoordinateRegion(center: southAfrica, span: span)
+        //creating initial map view
+        let southAfrica = CLLocationCoordinate2D(latitude: -33.92486, longitude: 18.42405)
+        let southAfricaSpan = MKCoordinateSpanMake(0.07, 0.07)
+        let southAfricaRegion = MKCoordinateRegionMake(southAfrica, southAfricaSpan)
         
-        mapView.setRegion(region, animated: true)
-        mapView.delegate = self
-        //        mapView.addAnnotations(JournalEntryController.sharedInstance.allJournalEntries())
+        journalMap.setRegion(southAfricaRegion, animated: true)
+        journalMap.mapType = .Hybrid
+        journalMap.zoomEnabled = true
+        journalMap.scrollEnabled = true
+
+        navigationItem.title = "iXplore"
         
-        mapView.mapType = .Hybrid
-        mapView.zoomEnabled = true
-        mapView.scrollEnabled = true
+        journalMap.addAnnotations(JournalEntryController.sharedInstance.updatedJournalEntryArray)
         
-        
-        //TABLE
-        
-        
-        //        func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //            return 1
-        //        }
-        //        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //            return 5
-        //        }
-        //        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //
-        //        }
-        //        func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //            print("row selected")
-        //        }
-        
-        //PINPOINTS
-        //        mapView.addAnnotation(JournalEntryController.sharedInstance.allJournalEntries())
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.newEntryPressed(_:)))
+        navigationItem.setRightBarButtonItem(addButton, animated: true)
+        updateUI()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
+    }
+    
+    func newEntryPressed(sender:UIBarButtonItem){
+        let viewController = NewEntryViewController(nibName: "NewEntryViewController", bundle: nil)
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Cancel"
+        navigationItem.backBarButtonItem = backItem
+        
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return JournalEntryController.sharedInstance.updatedJournalEntryArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "\(JournalEntryController.sharedInstance.updatedJournalEntryArray[indexPath.row].title!)"
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let entryArray = JournalEntryController.sharedInstance.updatedJournalEntryArray
+        
+        let entrySpan = MKCoordinateSpanMake(0.02, 0.02)
+        let entryRegion = MKCoordinateRegionMake(entryArray[indexPath.row].coordinate, entrySpan)
+        
+        journalMap.setRegion(entryRegion, animated: true)
+        journalMap.selectAnnotation(JournalEntryController.sharedInstance.updatedJournalEntryArray[indexPath.row], animated: true)
+    }
+    
+    //change pins and add callouts
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "MyPin"
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+        if (annotationView == nil){
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.pinTintColor = UIColor.purpleColor()
+            annotationView!.canShowCallout = true
+        }
+        annotationView!.annotation = annotation
+        return annotationView
     }
 
+    func updateUI() {
+        journalTable.reloadData()       //looks in the table view functions
+        
+        //visually adding annotations
+        if let e = JournalEntryController.sharedInstance.lastJournalEntry() {
+            journalMap.addAnnotation(e)
+        }
+    }
 
 }
