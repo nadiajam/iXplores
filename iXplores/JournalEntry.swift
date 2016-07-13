@@ -8,8 +8,9 @@
 
 import Foundation
 import MapKit
+import CoreLocation
 
-class JournalEntry: NSObject, MKAnnotation {
+class JournalEntry: NSObject, NSCoding, MKAnnotation {
     var title:String?
     var notes:String?
     var date:String? //NSDate //CLLocationCoordinate2D.timestamp
@@ -20,5 +21,11 @@ class JournalEntry: NSObject, MKAnnotation {
         self.notes = notes
         self.date = date
         self.coordinate = coordinate
+    }
+    required init?(coder: NSCoder) {
+        //
+    }
+    func encodeWithCoder(aCoder: NSCoder) {
+        //
     }
 }

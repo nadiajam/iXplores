@@ -8,11 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var journalMap: MKMapView!
     @IBOutlet weak var journalTable: UITableView!
+    
+    let locManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         journalMap.delegate = self
         journalTable.dataSource = self
         journalTable.delegate = self
+        locManager.delegate = self
         
         //creating initial map view
         let southAfrica = CLLocationCoordinate2D(latitude: -33.92486, longitude: 18.42405)
@@ -27,16 +31,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         let southAfricaRegion = MKCoordinateRegionMake(southAfrica, southAfricaSpan)
         
         journalMap.setRegion(southAfricaRegion, animated: true)
+        
+        //map view details
         journalMap.mapType = .Hybrid
         journalMap.zoomEnabled = true
         journalMap.scrollEnabled = true
-
-        navigationItem.title = "iXplore"
         
-        journalMap.addAnnotations(JournalEntryController.sharedInstance.updatedJournalEntryArray)
-        
+        //navigation bar details
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.newEntryPressed(_:)))
         navigationItem.setRightBarButtonItem(addButton, animated: true)
+        
+        //location preferences
+        locManager.requestWhenInUseAuthorization()
+        
+        locManager.desiredAccuracy = 10
+        locManager.distanceFilter = 10
+        //locManager.startUpdatingLocation()
+        
+        journalMap.showsUserLocation = true
+        
         updateUI()
     }
     
@@ -45,9 +58,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
         updateUI()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        journalMap.addAnnotations(JournalEntryController.sharedInstance.updatedJournalEntryArray)
+    }
+    
     func newEntryPressed(sender:UIBarButtonItem){
         let viewController = NewEntryViewController(nibName: "NewEntryViewController", bundle: nil)
-        
         let backItem = UIBarButtonItem()
         backItem.title = "Cancel"
         navigationItem.backBarButtonItem = backItem
@@ -96,5 +112,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDataSou
             journalMap.addAnnotation(e)
         }
     }
-
 }

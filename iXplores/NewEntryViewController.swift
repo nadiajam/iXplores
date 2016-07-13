@@ -8,8 +8,11 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class NewEntryViewController: UIViewController {
+class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
+
+    let locManager = CLLocationManager()
 
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryTextBox: UITextView!
@@ -28,15 +31,34 @@ class NewEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         entryTextBox!.layer.borderWidth = 1
         entryTextBox!.layer.borderColor = UIColor.blackColor().CGColor
         navigationItem.title = "New Entry"
+        locManager.delegate = self
+        locManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        entryLatitude.text = "\(newLocation.coordinate.latitude)"
+        entryLongitude.text = "\(newLocation.coordinate.longitude)"
+        locManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
+        if status == .Denied {
+            let alert = UIAlertController(title: "its ok", message: "we'll find you anyway", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler:  { (action) in
+            })
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else if status == .AuthorizedWhenInUse {
+            locManager.startUpdatingLocation()
+            return
+        }
+    }
 }

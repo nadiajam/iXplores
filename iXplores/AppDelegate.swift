@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let viewController = MapViewController(nibName: "MapViewController", bundle: nil)
-        
-        //navigationController.pushViewController(NewEntryViewController, animated: true)
-//        self.presentViewController(NewEntryViewController, animated: true, compltion: nil)
-        
+
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = UINavigationController(rootViewController: viewController)
         self.window?.makeKeyAndVisible()

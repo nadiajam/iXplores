@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import CoreLocation
 
 class JournalEntryController {
     static var sharedInstance = JournalEntryController()
