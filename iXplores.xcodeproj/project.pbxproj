@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67121AE21D370F3400B1F775 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67121AE01D370F3400B1F775 /* CustomTableViewCell.swift */; };
+		67121AE31D370F3400B1F775 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67121AE11D370F3400B1F775 /* CustomTableViewCell.xib */; };
+		67121B0D1D38647800B1F775 /* gradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67121B0C1D38647800B1F775 /* gradientBackground.swift */; };
 		672CBA561D33FA480093F75F /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CBA541D33FA480093F75F /* NewEntryViewController.swift */; };
 		672CBA571D33FA480093F75F /* NewEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672CBA551D33FA480093F75F /* NewEntryViewController.xib */; };
 		67B66FD61D3333CD00158E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B66FD51D3333CD00158E96 /* AppDelegate.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67121AE01D370F3400B1F775 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		67121AE11D370F3400B1F775 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		67121B0C1D38647800B1F775 /* gradientBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gradientBackground.swift; sourceTree = "<group>"; };
 		672CBA541D33FA480093F75F /* NewEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
 		672CBA551D33FA480093F75F /* NewEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewEntryViewController.xib; sourceTree = "<group>"; };
 		67B66FD21D3333CD00158E96 /* iXplores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iXplores.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,8 +73,11 @@
 				67B66FE81D33350400158E96 /* MapViewController.xib */,
 				67B66FEB1D33358400158E96 /* JournalEntry.swift */,
 				67B66FED1D3335A100158E96 /* JournalEntryController.swift */,
+				67121B0C1D38647800B1F775 /* gradientBackground.swift */,
 				672CBA541D33FA480093F75F /* NewEntryViewController.swift */,
 				672CBA551D33FA480093F75F /* NewEntryViewController.xib */,
+				67121AE01D370F3400B1F775 /* CustomTableViewCell.swift */,
+				67121AE11D370F3400B1F775 /* CustomTableViewCell.xib */,
 				67B66FDC1D3333CD00158E96 /* Assets.xcassets */,
 				67B66FDE1D3333CD00158E96 /* LaunchScreen.storyboard */,
 				67B66FE11D3333CD00158E96 /* Info.plist */,
@@ -138,6 +147,7 @@
 				67B66FE01D3333CD00158E96 /* LaunchScreen.storyboard in Resources */,
 				67B66FEA1D33350400158E96 /* MapViewController.xib in Resources */,
 				672CBA571D33FA480093F75F /* NewEntryViewController.xib in Resources */,
+				67121AE31D370F3400B1F775 /* CustomTableViewCell.xib in Resources */,
 				67B66FDD1D3333CD00158E96 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67121B0D1D38647800B1F775 /* gradientBackground.swift in Sources */,
+				67121AE21D370F3400B1F775 /* CustomTableViewCell.swift in Sources */,
 				672CBA561D33FA480093F75F /* NewEntryViewController.swift in Sources */,
 				67B66FEE1D3335A100158E96 /* JournalEntryController.swift in Sources */,
 				67B66FEC1D33358400158E96 /* JournalEntry.swift in Sources */,

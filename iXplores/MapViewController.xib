@@ -26,16 +26,13 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRq-dk-XzB">
                     <rect key="frame" x="0.0" y="350" width="600" height="250"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="250" id="zvr-55-isG"/>
-                    </constraints>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bRq-dk-XzB" secondAttribute="bottom" id="Ba4-cP-JZZ"/>
                 <constraint firstItem="kfr-nH-Vme" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DCc-Om-qWW"/>
                 <constraint firstAttribute="trailing" secondItem="bRq-dk-XzB" secondAttribute="trailing" id="Sd1-Pr-wi5"/>
+                <constraint firstItem="bRq-dk-XzB" firstAttribute="top" secondItem="kfr-nH-Vme" secondAttribute="bottom" id="kfA-jM-cmY"/>
                 <constraint firstItem="kfr-nH-Vme" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="law-fN-hCx"/>
                 <constraint firstAttribute="trailing" secondItem="kfr-nH-Vme" secondAttribute="trailing" id="pTX-8z-4YT"/>
                 <constraint firstItem="bRq-dk-XzB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="znU-lE-eY3"/>

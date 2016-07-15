@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="CustomCellOne" rowHeight="100" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="iXplores" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="273" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lvo-U3-U0w">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="99"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="kUY-GX-Vft"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-DD-E3G">
+                        <rect key="frame" x="108" y="42" width="202" height="16"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHw-gw-vgK">
+                        <rect key="frame" x="108" y="20" width="202" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Lvo-U3-U0w" secondAttribute="bottom" id="7A9-g2-ZD1"/>
+                    <constraint firstItem="Lvo-U3-U0w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Bnp-mf-68l"/>
+                    <constraint firstItem="KHw-gw-vgK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="EMc-f5-o4Y"/>
+                    <constraint firstItem="MBR-DD-E3G" firstAttribute="top" secondItem="KHw-gw-vgK" secondAttribute="bottom" constant="2" id="G2t-Jh-FEi"/>
+                    <constraint firstItem="KHw-gw-vgK" firstAttribute="leading" secondItem="Lvo-U3-U0w" secondAttribute="trailing" constant="8" id="I4x-be-i7D"/>
+                    <constraint firstItem="MBR-DD-E3G" firstAttribute="leading" secondItem="Lvo-U3-U0w" secondAttribute="trailing" constant="8" id="Mub-6X-9Ek"/>
+                    <constraint firstItem="Lvo-U3-U0w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zm8-VK-7ad"/>
+                    <constraint firstAttribute="trailing" secondItem="MBR-DD-E3G" secondAttribute="trailing" constant="-37" id="a6X-ZA-7pn"/>
+                    <constraint firstAttribute="trailing" secondItem="KHw-gw-vgK" secondAttribute="trailing" constant="-37" id="c94-li-a9b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="customDate" destination="MBR-DD-E3G" id="w4y-E7-Q9s"/>
+                <outlet property="customImage" destination="Lvo-U3-U0w" id="VTA-hB-Qkk"/>
+                <outlet property="customTitle" destination="KHw-gw-vgK" id="5bR-Jy-xlZ"/>
+            </connections>
+            <point key="canvasLocation" x="251" y="53"/>
+        </tableViewCell>
+    </objects>
+</document>
